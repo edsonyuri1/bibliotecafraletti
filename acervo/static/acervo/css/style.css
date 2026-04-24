@@ -1,0 +1,187 @@
+/*  CONFIGURAÇÕES GERAIS  */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* fonte principal do projeto */
+    color: #333; /* define a cor padrão dos textos */
+    margin: 0; /* margens do navegador */
+    padding: 0; /* preenchimentos do navegador */
+}
+
+/* ESTILO DA TELA DE LOGIN (JAZZMIN)  */
+/* O seletor abaixo só funciona se o body tiver a classe .login-page (automático do Jazzmin) */
+body.login-page {
+    /* fundo */
+    background: url('../fundo_livros.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+
+    /* 2. Alinhamento */
+    display: flex !important;
+    flex-direction: row !important; /* força a ficar na horizontal direita */
+    justify-content: flex-end !important; /* empurra para a direita */
+    align-items: center !important; /* centraliza na altura */
+    min-height: 100vh !important;
+    width: 100% !important; /* garante que o corpo ocupe 100% a largura  */
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-right: 8% !important; /* recuo da direita */
+}
+
+.login-page .login-box {
+    margin: 0 !important; /* para nao centralizar a caixa sozinho */
+}
+
+/* Cartão do formulário de login */
+.login-page .card {
+    border-radius: 10px !important; /* quão arredondado será a borda da caixa */
+    border: none !important; /* diz se o card vai ter borda ou não */
+    box-shadow: 0 15px 50px rgba(0,0,0,0.4) !important; /* sombra da caixa */
+    background-color: rgba(255, 255, 255, 1.95) !important; /* cor do fundo e transparência */
+}
+
+/* botão de login (verde Pereiras) */
+.login-page .btn-primary {
+    background-color: #21bc5c !important; /* define a cor, no caso usei a verde */
+    border-color: #79bc5c !important; /* define a cor da borda do botão */
+    font-weight: bold !important; /* bold deixa o texto do botão em negrito */
+}
+
+/* Esse comando é para esconder o logotipo 'A' do Jazzmin na nossa tela de login */
+.login-page .login-logo {
+    display: none !important;
+}
+
+/*  ESTILO DAS PÁGINAS INTERNAS (PÓS-LOGIN / ACERVO)  */
+/* é preciso do comando > :not(.login-page) para que as regras NÃO funcionem na tela de login, apenas no pós-login */
+body:not(.login-page) {
+    background-color: #f8f9fa !important; /* cor do fundo*/
+    background-image: none !important; /* remove qualquer imagem de fundo que tenha ficado do login */
+    display: block !important; /* volta o layout para o padrão */
+}
+
+/* Controle da Logo */
+.logo {
+    display: block !important;
+    margin: 20px auto !important; /* centraliza a logo */
+    width: 500px !important;      /* tamanho da logo*/
+    height: auto !important;     /* mantém a proporção da imagem */
+    transition: transform 0.3s;  /* Opcional: efeito suave ao carregar */
+}
+
+/* container limita a largura do conteúdo do site */
+.container {
+    max-width: 1000px; /* define a largura máxima do site em telas grandes */
+    margin: 0 auto; /* centraliza o container na tela */
+    padding: 20px; /* adiciona um espaço interno para o texto não colar nas bordas */
+}
+
+/* Menu de Botões da Home */
+.menu-botoes {
+    display: flex; /* coloca os botões lado a lado */
+    justify-content: center; /* centraliza os botões horizontalmente */
+    gap: 15px; /* espaço entre um botão e outro */
+    margin: 25px 0; /* margen de espaço acima e abaixo do menu */
+    flex-wrap: wrap; /* se a tela for pequena, os botões se alinham um em baixo do outro */
+}
+
+.btn-painel {
+    flex: 1; /* faz todos os botões terem a mesma largura */
+    min-width: 150px; /* tamanho min: impede que o botão fique muito pequeno em celulares */
+    padding: 40px; /* espaço interno do botão */
+    background: #ffffff; /* cor de fundo inicial (aqui usei branco) */
+    border: 2px solid #9b51e0; /* cor da borda e tamanha */
+    border-radius: 15px; /* arredonda os cantos dos botões */
+    text-align: center; /* center: centraliza o texto dentro do botão */
+    text-decoration: none; /* none remove o sublinhado azul de links */
+    color: #2c3e50; /* cor inicial do texto */
+    font-weight: bold; /* o texto fica negrito */
+    transition: all 0.3s ease; /* efeito suave de transição de cor e posição */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* sombra da caixa */
+}
+
+/* Efeito hover ao passar o mouse nos botões do painel */
+.btn-painel:hover {
+    background: #9b51e0; /* muda o fundo do botão para verde ao passar o mouse */
+    color: white; /* muda a cor do texto para branco ao passar o mouse */
+    transform: translateY(-3px); /* faz o botão "subir" 3px ao passar o mouse */
+}
+
+/* Cards dos Livros */
+.livro-card {
+    background: white; /* fundo branco */
+    border-radius: 12px; /* cantos arredondados */
+    padding: 20px; /* espaço interno */
+    margin-bottom: 20px; /* espaço entre os cards */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* cor da sombra da caixa */
+
+    /* cor da borda */
+    border-left: 6px solid #9b51e0;
+
+    transition: transform 0.3s ease; /* transição  */
+}
+
+/* Efeito hover (ao passar o mouse */
+.livro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(155, 81, 224, 0.2); /* cor da sombra */
+}
+
+/* Cores e estilo do titulo do livro */
+.livro-card h3 {
+    color: #5a2d8a; /* cor roxa */
+    margin-top: 0;
+    font-weight: bold;
+}
+
+/* Botão de "Baixar Obra" */
+.btn-baixar {
+    display: inline-block;
+    margin-top: 10px;
+    color: #9b51e0; /* cor roxa */
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #9b51e0; /* borda roxa */
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-baixar:hover {
+    background: #9b51e0; /* Fundo roxo ao passar o mouse */
+    color: white;
+}
+
+/* Estilo para a etiqueta */
+.badge-digital {
+    background-color: #9b51e0; /* Fundo Roxo */
+    color: white; /* Texto Branco */
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ajusta a logo no topo do Admin (Jazzmin) */
+.brand-link .brand-image {
+    max-height: 50px !important; /* tamanho */
+    width: auto !important;      /* proporção */
+    opacity: 1 !important;       /* opacidade da imagem */
+    margin-top: -2px !important;
+}
+
+/* Cor do link 'Voltar ' no menu superior */
+.navbar-nav .nav-link {
+    color: #9b51e0 !important; /* Cor ROXA  */
+    font-weight: bold !important;
+    font-size: 1rem;
+}
+
+/* Cor quando passa o mouse */
+.navbar-nav .nav-link:hover {
+    color: #5a2d8a !important;
+    text-decoration: underline !important;
+}
+
+
+.navbar-light .navbar-nav .nav-link {
+    color: #333333 !important;
+}

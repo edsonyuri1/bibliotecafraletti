@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Fraletti</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="home-body" style="margin: 0; padding: 0;">
+
+    <header style="background: #9b51e0; color: white; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'acervo/pereiras_logo.png' %}" alt="Logo Pequena" style="height: 50px; width: auto;">
+            </a>
+            <div>
+                <h2 style="margin: 0; font-size: 1.1rem; line-height: 1;">Pereiras</h2>
+                <small style="opacity: 0.9;">São Paulo</small>
+            </div>
+        </div>
+
+       <nav style="display: flex; justify-content: flex-end; width: 100%; align-items: center; padding-right: 20px;">
+    <ul style="list-style: none; margin: 0; padding: 0;">
+        <li>
+            <form action="{% url 'admin:logout' %}" method="post" style="margin: 0;">
+                {% csrf_token %}
+                <button type="submit" style="background: #e74c3c; color: white; border: none; padding: 8px 18px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 14px;">
+                    SAIR
+                </button>
+            </form>
+        </li>
+    </ul>
+</nav>
+    </header>
+
+    <div class="container">
+        <div style="text-align: center; margin-top: 30px;">
+            <img src="{% static 'acervo/pereiras.png' %}" alt="Logo Biblioteca" class="logo">
+        </div>
+
+        <div class="menu-botoes" style="margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+
+    <a href="/admin/acervo/livro/" class="btn-painel">
+        <i class="bi bi-book-half"></i> Livros Cadastrados</a>
+
+    <a href="/admin/acervo/livro/add/" class="btn-painel">
+        <i class="bi bi-plus-circle"></i> Cadastrar Livro</a>
+
+    <a href="/admin/acervo/emprestimo/" class="btn-painel">
+        <i class="bi bi-book-half"></i> Empréstimos</a>
+
+    <a href="/admin/auth/user/add/" class="btn-painel">
+        <i class="bi bi-person-plus"></i> Cadastrar Pessoas</a>
+
+</div>
+
+        <div style="margin-top: 30px;">
+            {% for livro in livros %}
+            <div class="livro-card">
+                <h3>{{ livro.titulo }}</h3>
+                <p><strong>Autor:</strong> {{ livro.autor.nome }} | <strong>Naturalidade:</strong> {{ livro.autor.naturalidade }}</p>
+                {% if livro.e_digital and livro.arquivo_pdf %}
+                    <span style="background: #e74c3c; color: white; padding: 3px 8px; border-radius: 5px; font-size: 12px;">Digital</span>
+                    <a href="{{ livro.arquivo_pdf.url }}" style="color: #3498db; text-decoration: none; margin-left: 10px;" target="_blank">
+                        <i class="bi bi-download"></i> Baixar Obra
+                    </a>
+                {% endif %}
+            </div>
+            {% empty %}
+                <p style="text-align: center; margin-top: 40px; color: #7f8c8d;">Nenhum livro encontrado.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer style="background: #2c3e50; color: #bdc3c7; text-align: center; padding: 20px 0; margin-top: 50px;">
+        <p style="margin: 0; font-size: 0.9rem;">&copy; 2026 Biblioteca Municipal de Pereiras</p>
+        <p style="margin: 5px 0 0 0; font-size: 0.8rem;">Desenvolvido pelos integrantes do Grupo de Projeto Integrador - Univesp</p>
+    </footer>
+
+</body>
+</html>
