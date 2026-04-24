@@ -140,19 +140,50 @@ Quando trocarmos o banco, o MySQL estará vazio. Temos duas opções (como não 
 
 # Como rodar o projeto:
 
-Sempre que abrir o projeto no PyCharm:
+1 - Clonar o repositório:
 
-Verifique se o ambiente virtual está ativo, para isso executamos no terminal o seguinte comando:
+bash
 
-Bash:
+**git clone [https://github.com/edsonyuri1/bibliotecafraletti.git](https://github.com/edsonyurii/bibliotecafraletti.git)
+cd bibliotecafraletti**
+
+2 - Criar um ambiente virtual 
+
+Bash
+
+**python -m venv .venv**
+
+3 - Ativar o ambiente virtual
+
+Windows: **.venv\Scripts\activate*
+
+4 - Instalar as dependências
+
+Bash
+
+**pip install -r requirements.txt**
+
+5 - Configurar o Banco de Dados
+
+Bash
+
+**python manage.py migrate**
+
+6 - Agora é necessario criar um usuário administrador, ele irá pedir pra um nome de usuario, e-mail (que pode ser deixado em branco) e depois uma senha (ela não aparece ao digitar, é normal). 
+
+Bash
+
+**python manage.py createsuperuser**
+
+
+7. Iniciar o servidor
+
+Bash
 
 **python manage.py runserver**
 
-Ele irá gerar o seguinte link:
-
-http://127.0.0.1:8000 
+Vai gerar um link parecido com esse, é só clicar que ira abrir o app -> http://127.0.0.1:8000
 
 Ele pedirá para entrar com uma conta e senha para acessar o aplicativo.
 
-http://127.0.0.1:8000/admin -> é o caminho para o painel de gestão.
 
