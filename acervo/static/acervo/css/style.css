@@ -31,15 +31,15 @@ body.login-page {
 
 /* Cartão do formulário de login */
 .login-page .card {
-    border-radius: 10px !important; /* quão arredondado será a borda da caixa */
+    border-radius: 200px !important; /* quão arredondado será a borda da caixa */
     border: none !important; /* diz se o card vai ter borda ou não */
-    box-shadow: 0 15px 50px rgba(0,0,0,0.4) !important; /* sombra da caixa */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.7) !important; /* sombra da caixa */
     background-color: rgba(255, 255, 255, 1.95) !important; /* cor do fundo e transparência */
 }
 
 /* botão de login (verde Pereiras) */
 .login-page .btn-primary {
-    background-color: #21bc5c !important; /* define a cor, no caso usei a verde */
+    background-color: #21bc5c !important; /* define a cor, no caso usei  verde */
     border-color: #79bc5c !important; /* define a cor da borda do botão */
     font-weight: bold !important; /* bold deixa o texto do botão em negrito */
 }
@@ -61,7 +61,7 @@ body:not(.login-page) {
 .logo {
     display: block !important;
     margin: 20px auto !important; /* centraliza a logo */
-    width: 500px !important;      /* tamanho da logo*/
+    width: 700px !important;      /* tamanho da logo*/
     height: auto !important;     /* mantém a proporção da imagem */
     transition: transform 0.3s;  /* Opcional: efeito suave ao carregar */
 }
@@ -77,29 +77,29 @@ body:not(.login-page) {
 .menu-botoes {
     display: flex; /* coloca os botões lado a lado */
     justify-content: center; /* centraliza os botões horizontalmente */
-    gap: 15px; /* espaço entre um botão e outro */
-    margin: 25px 0; /* margen de espaço acima e abaixo do menu */
+    gap: 25px; /* espaço entre um botão e outro */
+    margin: 50px 0; /* margen de espaço acima e abaixo do menu */
     flex-wrap: wrap; /* se a tela for pequena, os botões se alinham um em baixo do outro */
 }
 
 .btn-painel {
     flex: 1; /* faz todos os botões terem a mesma largura */
     min-width: 150px; /* tamanho min: impede que o botão fique muito pequeno em celulares */
-    padding: 40px; /* espaço interno do botão */
+    padding: 50px; /* espaço interno do botão */
     background: #ffffff; /* cor de fundo inicial (aqui usei branco) */
-    border: 2px solid #9b51e0; /* cor da borda e tamanha */
-    border-radius: 15px; /* arredonda os cantos dos botões */
+    border: 1px solid #058a3f; /* cor da borda e tamanho */
+    border-radius: 150px; /* arredonda os cantos dos botões */
     text-align: center; /* center: centraliza o texto dentro do botão */
     text-decoration: none; /* none remove o sublinhado azul de links */
-    color: #2c3e50; /* cor inicial do texto */
+    color: #058a3f; /* cor inicial do texto */
     font-weight: bold; /* o texto fica negrito */
-    transition: all 0.3s ease; /* efeito suave de transição de cor e posição */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* sombra da caixa */
+    transition: all 0.5s ease; /* efeito suave de transição de cor e posição */
+    box-shadow: 0 10px 3px rgba(0,0,0,0.2); /* sombra da caixa */
 }
 
 /* Efeito hover ao passar o mouse nos botões do painel */
 .btn-painel:hover {
-    background: #9b51e0; /* muda o fundo do botão para verde ao passar o mouse */
+    background: #058a3f; /* muda o fundo do botão para verde ao passar o mouse */
     color: white; /* muda a cor do texto para branco ao passar o mouse */
     transform: translateY(-3px); /* faz o botão "subir" 3px ao passar o mouse */
 }
@@ -113,7 +113,7 @@ body:not(.login-page) {
     box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* cor da sombra da caixa */
 
     /* cor da borda */
-    border-left: 6px solid #9b51e0;
+    border-left: 6px solid #058a3f;
 
     transition: transform 0.3s ease; /* transição  */
 }
@@ -126,7 +126,7 @@ body:not(.login-page) {
 
 /* Cores e estilo do titulo do livro */
 .livro-card h3 {
-    color: #5a2d8a; /* cor roxa */
+    color: #058a3f; /* cor verde */
     margin-top: 0;
     font-weight: bold;
 }
@@ -135,23 +135,23 @@ body:not(.login-page) {
 .btn-baixar {
     display: inline-block;
     margin-top: 10px;
-    color: #9b51e0; /* cor roxa */
+    color: #058a3f; /* cor verde */
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid #9b51e0; /* borda roxa */
+    border: 2px solid #058a3f; /* borda verde */
     padding: 5px 15px;
     border-radius: 5px;
     transition: 0.3s;
 }
 
 .btn-baixar:hover {
-    background: #9b51e0; /* Fundo roxo ao passar o mouse */
+    background: #058a3f; /* Fundo verde ao passar o mouse */
     color: white;
 }
 
 /* Estilo para a etiqueta */
 .badge-digital {
-    background-color: #9b51e0; /* Fundo Roxo */
+    background-color: #058a3f; /* Fundo Roxo */
     color: white; /* Texto Branco */
     padding: 3px 10px;
     border-radius: 20px;

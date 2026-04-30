@@ -184,6 +184,6 @@ Bash
 
 Vai gerar um link parecido com esse, é só clicar que ira abrir o app -> http://127.0.0.1:8000
 
-Ele pedirá para entrar com uma conta e senha para acessar o aplicativo.
+Ele pedirá para entrar com uma conta e senha para acessar o aplicativo, é só colocar o login e senha que você criou.
 
 
