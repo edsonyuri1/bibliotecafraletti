@@ -6,78 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedro Fraletti</title>
     <link rel="stylesheet" href="{% static 'acervo/css/style.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body class="home-body" style="margin: 0; padding: 0;">
 
-    <header style="background: #058a3f; color: white; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'acervo/pereiras_logo.png' %}" alt="Logo Pequena" style="height: 70px; width: auto;">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="position: absolute; width: 0; height: 0; pointer-events: none; visibility: hidden;">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+          <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+        </filter>
+      </defs>
+    </svg>
+
+    <header style="background: rgba(17, 42, 60, 0.95); backdrop-filter: blur(10px); color: white; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 1000;">
+
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <a href="{% url 'home' %}" style="display: flex; align-items: center; text-decoration: none; color: white;">
+                    <img src="{% static 'acervo/pereiras_logo.png' %}" alt="Logo Pequena" style="height: 60px; width: auto; position: relative; z-index: 1;">
             </a>
+
+            <div style="height: 35px; width: 1px; background: rgba(255,255,255,0.2);"></div>
+
             <div>
-                <h2 style="margin: 0; font-size: 1.1rem; line-height: 1;">Pereiras</h2>
-                <small style="opacity: 0.9;">São Paulo</small>
+                <h2 style="margin: 0; font-size: 1.1rem; letter-spacing: 1px; line-height: 1;">PEREIRAS</h2>
+                <small style="color: #2ecc71; font-size: 0.7rem; font-weight: bold;">● GESTÃO DE ACERVO</small>
             </div>
         </div>
 
-       <nav style="display: flex; justify-content: flex-end; width: 100%; align-items: center; padding-right: 20px;">
-    <ul style="list-style: none; margin: 0; padding: 0;">
-        <li>
+        <nav style="display: flex; align-items: center; gap: 25px;">
+            <div style="text-align: right; border-right: 1px solid rgba(255,255,255,0.2); padding-right: 20px;">
+                <span style="display: block; font-size: 0.65rem; opacity: 0.7; text-transform: uppercase;">Olá, seja bem vindo(a)</span>
+                <span style="font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;">{{ user.username|upper }}</span>
+            </div>
+
             <form action="{% url 'admin:logout' %}" method="post" style="margin: 0;">
                 {% csrf_token %}
-                <button type="submit" style="background: #e74c3c; color: white; border: none; padding: 8px 18px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 14px;">
-                    SAIR
+                <button type="submit" class="btn-sair-estilo">
+                    <i class="fa-solid fa-right-from-bracket"></i> SAIR
                 </button>
             </form>
-        </li>
-    </ul>
-</nav>
+        </nav>
     </header>
 
     <div class="container">
-        <div style="text-align: center; margin-top: 30px;">
-            <img src="{% static 'acervo/pereiras.png' %}" alt="Logo Biblioteca" class="logo">
+        <div style="text-align: center; margin-top: 50px;">
+            <span class="logo-container respiro">
+                <img src="{% static 'acervo/pereiras.png' %}" alt="Logo Principal" style="height: 200px; width: auto; position: relative; z-index: 1;">
+            </span>
         </div>
 
-        <div class="menu-botoes" style="margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+        <div class="menu-botoes" style="margin-top: 50px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+            <a href="/admin/acervo/livro/" class="blob-btn">
+                <i class="fa-solid fa-book-bookmark"></i> LIVROS CADASTRADOS
+                <span class="blob-btn__inner">
+                    <span class="blob-btn__blobs">
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                    </span>
+                </span>
+            </a>
 
-    <a href="/admin/acervo/livro/" class="btn-painel">
-        <i class="bi bi-book-half"></i> Livros Cadastrados</a>
+            <a href="/admin/acervo/livro/add/" class="blob-btn">
+                <i class="fa-solid fa-circle-plus"></i> CADASTRAR LIVRO
+                <span class="blob-btn__inner">
+                    <span class="blob-btn__blobs">
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                    </span>
+                </span>
+            </a>
 
-    <a href="/admin/acervo/livro/add/" class="btn-painel">
-        <i class="bi bi-plus-circle"></i> Cadastrar Livro</a>
+            <a href="/admin/acervo/emprestimo/" class="blob-btn">
+                <i class="fa-solid fa-hand-holding-hand"></i> EMPRÉSTIMOS
+                <span class="blob-btn__inner">
+                    <span class="blob-btn__blobs">
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                    </span>
+                </span>
+            </a>
 
-    <a href="/admin/acervo/emprestimo/" class="btn-painel">
-        <i class="bi bi-book-half"></i> Empréstimos</a>
-
-    <a href="/admin/auth/user/add/" class="btn-painel">
-        <i class="bi bi-person-plus"></i> Cadastrar Pessoas</a>
-
-</div>
-
-        <div style="margin-top: 30px;">
-            {% for livro in livros %}
-            <div class="livro-card">
-                <h3>{{ livro.titulo }}</h3>
-                <p><strong>Autor:</strong> {{ livro.autor.nome }} | <strong>Naturalidade:</strong> {{ livro.autor.naturalidade }}</p>
-                {% if livro.e_digital and livro.arquivo_pdf %}
-                    <span style="background: #e74c3c; color: white; padding: 3px 8px; border-radius: 5px; font-size: 12px;">Digital</span>
-                    <a href="{{ livro.arquivo_pdf.url }}" style="color: #3498db; text-decoration: none; margin-left: 10px;" target="_blank">
-                        <i class="bi bi-download"></i> Baixar Obra
-                    </a>
-                {% endif %}
-            </div>
-            {% empty %}
-                <p style="text-align: center; margin-top: 40px; color: #7f8c8d;">Nenhum livro encontrado.</p>
-            {% endfor %}
+            <a href="/admin/auth/user/" class="blob-btn">
+                <i class="fa-solid fa-users-gear"></i> CADASTRO DE USUÁRIOS
+                <span class="blob-btn__inner">
+                    <span class="blob-btn__blobs">
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                    </span>
+                </span>
+            </a>
         </div>
     </div>
 
-    <footer style="background: #2c3e50; color: #bdc3c7; text-align: center; padding: 20px 0; margin-top: 50px;">
-        <p style="margin: 0; font-size: 0.9rem;">&copy; 2026 Biblioteca Municipal de Pereiras</p>
-        <p style="margin: 5px 0 0 0; font-size: 0.8rem;">Desenvolvido pelos integrantes do Grupo de Projeto Integrador - Univesp</p>
+    <footer style="background: #1a252f; color: #95a5a6; text-align: center; padding: 30px 0; margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <p style="margin: 0; font-size: 0.9rem; font-weight: 500;">&copy; 2026 Biblioteca Municipal de Pereiras</p>
+        <p style="margin: 8px 0 0 0; font-size: 0.75rem; opacity: 0.7;">Desenvolvido pelo Grupo de Projeto Integrador - Univesp</p>
     </footer>
 
 </body>

@@ -31,10 +31,11 @@ body.login-page {
 
 /* Cartão do formulário de login */
 .login-page .card {
-    border-radius: 200px !important; /* quão arredondado será a borda da caixa */
+    border-radius: 30px !important; /* quão arredondado será a borda da caixa */
     border: none !important; /* diz se o card vai ter borda ou não */
-    box-shadow: 0 25px 50px rgba(0,0,0,0.7) !important; /* sombra da caixa */
-    background-color: rgba(255, 255, 255, 1.95) !important; /* cor do fundo e transparência */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4) !important; /* sombra da caixa */
+    background-color: rgba(255, 255, 255, 0.9) !important; /* cor do fundo e transparência */
+    backdrop-filter: blur(10px);
 }
 
 /* botão de login (verde Pereiras) */
@@ -52,7 +53,7 @@ body.login-page {
 /*  ESTILO DAS PÁGINAS INTERNAS (PÓS-LOGIN / ACERVO)  */
 /* é preciso do comando > :not(.login-page) para que as regras NÃO funcionem na tela de login, apenas no pós-login */
 body:not(.login-page) {
-    background-color: #f8f9fa !important; /* cor do fundo*/
+    background-color: #fff2e8 !important; /* cor do fundo*/
     background-image: none !important; /* remove qualquer imagem de fundo que tenha ficado do login */
     display: block !important; /* volta o layout para o padrão */
 }
@@ -68,42 +69,114 @@ body:not(.login-page) {
 
 /* container limita a largura do conteúdo do site */
 .container {
-    max-width: 1000px; /* define a largura máxima do site em telas grandes */
-    margin: 0 auto; /* centraliza o container na tela */
-    padding: 20px; /* adiciona um espaço interno para o texto não colar nas bordas */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 70vh; /* Faz o conteúdo ocupar 70% da altura da tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
 }
 
 /* Menu de Botões da Home */
 .menu-botoes {
     display: flex; /* coloca os botões lado a lado */
     justify-content: center; /* centraliza os botões horizontalmente */
-    gap: 25px; /* espaço entre um botão e outro */
+    gap: 40px; /* espaço entre um botão e outro */
     margin: 50px 0; /* margen de espaço acima e abaixo do menu */
     flex-wrap: wrap; /* se a tela for pequena, os botões se alinham um em baixo do outro */
 }
 
-.btn-painel {
-    flex: 1; /* faz todos os botões terem a mesma largura */
-    min-width: 150px; /* tamanho min: impede que o botão fique muito pequeno em celulares */
-    padding: 50px; /* espaço interno do botão */
-    background: #ffffff; /* cor de fundo inicial (aqui usei branco) */
-    border: 1px solid #058a3f; /* cor da borda e tamanho */
-    border-radius: 150px; /* arredonda os cantos dos botões */
-    text-align: center; /* center: centraliza o texto dentro do botão */
-    text-decoration: none; /* none remove o sublinhado azul de links */
-    color: #058a3f; /* cor inicial do texto */
-    font-weight: bold; /* o texto fica negrito */
-    transition: all 0.5s ease; /* efeito suave de transição de cor e posição */
-    box-shadow: 0 10px 3px rgba(0,0,0,0.2); /* sombra da caixa */
+/* ESTILO DOS BOTÕES */
+.blob-btn {
+  z-index: 1;
+  position: relative;
+  padding: 30px 60px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #218838; /* cor do texto inicial */
+  font-size: 20px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  border-radius: 30px; /* bordas arredondadas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
-/* Efeito hover ao passar o mouse nos botões do painel */
-.btn-painel:hover {
-    background: #058a3f; /* muda o fundo do botão para verde ao passar o mouse */
-    color: white; /* muda a cor do texto para branco ao passar o mouse */
-    transform: translateY(-3px); /* faz o botão "subir" 3px ao passar o mouse */
+.blob-btn:before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #41bc2d; /* Borda verde */
+  border-radius: 30px;
 }
 
+.blob-btn:hover {
+  color: #ffffff; /* Texto fica branco no hover */
+}
+
+.blob-btn__inner {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background: #ffffff;
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url("#goo");
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 2px;
+  width: 25%;
+  height: 100%;
+  background: #41bc2d; /* Cor das bolhas  */
+  border-radius: 100%;
+  transform: translate3d(0, 200%, 0) scale(2.0);
+  transition: transform 0.45s;
+}
+
+/* Delays para as bolhas subirem */
+.blob-btn__blob:nth-child(1) { left: 0%; transition-delay: 0s; }
+.blob-btn__blob:nth-child(2) { left: 30%; transition-delay: 0.08s; }
+.blob-btn__blob:nth-child(3) { left: 60%; transition-delay: 0.16s; }
+.blob-btn__blob:nth-child(4) { left: 90%; transition-delay: 0.24s; }
+
+.blob-btn:hover .blob-btn__blob {
+  transform: translateZ(0) scale(2.0);
+}
+
+/* Ajuste dos ícone dentro do botão */
+.blob-btn i {
+    margin-right: 15px;
+    font-size: 1.5rem; /* Tamanho  */
+    display: inline-block; /* faz o icone girar */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* efeito elástico */
+}
+/* Animação ao passar o mouse: Aumenta 30% e gira 15 graus */
+.blob-btn:hover i {
+    transform: scale(1.3) rotate(15deg);
+    color: #ffffff; /* Garante que o ícone fique branco junto com o texto */
+}
 /* Cards dos Livros */
 .livro-card {
     background: white; /* fundo branco */
@@ -121,7 +194,7 @@ body:not(.login-page) {
 /* Efeito hover (ao passar o mouse */
 .livro-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(155, 81, 224, 0.2); /* cor da sombra */
+    box-shadow: 0 8px 20px rgba(33, 188, 92, 0.2); /* cor da sombra */
 }
 
 /* Cores e estilo do titulo do livro */
@@ -135,7 +208,7 @@ body:not(.login-page) {
 .btn-baixar {
     display: inline-block;
     margin-top: 10px;
-    color: #058a3f; /* cor verde */
+    color: #058a3f; /* cor   */
     text-decoration: none;
     font-weight: bold;
     border: 2px solid #058a3f; /* borda verde */
@@ -145,11 +218,11 @@ body:not(.login-page) {
 }
 
 .btn-baixar:hover {
-    background: #058a3f; /* Fundo verde ao passar o mouse */
+    background: #058a3f; /* fundo verde ao passar o mouse */
     color: white;
 }
 
-/* Estilo para a etiqueta */
+/* Estilo das faixas superior */
 .badge-digital {
     background-color: #058a3f; /* Fundo Roxo */
     color: white; /* Texto Branco */
@@ -168,9 +241,9 @@ body:not(.login-page) {
     margin-top: -2px !important;
 }
 
-/* Cor do link 'Voltar ' no menu superior */
+/* Cor e tmanhao do 'Voltar ' no menu superior */
 .navbar-nav .nav-link {
-    color: #9b51e0 !important; /* Cor ROXA  */
+    color: #218458 !important; /* Cor do icone VOLTAR  */
     font-weight: bold !important;
     font-size: 1rem;
 }
@@ -184,4 +257,85 @@ body:not(.login-page) {
 
 .navbar-light .navbar-nav .nav-link {
     color: #333333 !important;
+}
+
+/* Container da logo */
+.logo-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 25px; /* arredonda  corte do brilho */
+}
+
+/* efeito de brilho na logo principal */
+.logo-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: skewX(-25deg); /* Inclinação */
+    animation: shine-animation 5s infinite; /* Passa a cada 5 segundos */
+    z-index: 2;
+}
+
+/* Movimentação do brilho */
+@keyframes shine-animation {
+    0% { left: -200%; }
+    80% { left: 200%; } /* velocidade */
+    100% { left: 200%; }
+}
+
+header {
+    /* EFEITOS PARA O HEADER > efeito de vidro */
+    background: rgba(17, 42, 60, 0.75) !important;
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.btn-sair-estilo {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-sair-estilo i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.btn-sair-estilo:hover {
+    background: #bc4037;
+    border-color: #bc4037;
+    box-shadow: 0 4px 15px rgba(188, 64, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-sair-estilo:hover i {
+    transform: translateX(3px); /* animação no ícone SAIR */
 }
